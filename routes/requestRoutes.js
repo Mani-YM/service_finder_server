@@ -13,7 +13,7 @@ const { protect, admin } = require("../middleware/authMiddleware")
 router.get("/myRequests", protect, getMyRequests)
 
 // Public route for creating a request (can be done without login)
-router.post("/", createRequest)
+router.post("/", protect, createRequest)
 
 
 

@@ -6,6 +6,8 @@ const Technician = require("../models/Technician")
 // @route   POST /api/requests
 // @access  Private
 const createRequest = asyncHandler(async (req, res) => {
+  console.log(req);
+  
   const { requestInfo, description, address, contact, preferredDate } = req.body
 
   const request = await Request.create({
@@ -14,7 +16,8 @@ const createRequest = asyncHandler(async (req, res) => {
     address,
     contact,
     preferredDate,
-    user: req.user ? req.user._id : null,
+    user: req.user._id,
+    // user: req.user ? req.user._id : null,
     status: "pending",
   })
 
